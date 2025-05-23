@@ -9,7 +9,7 @@ from happy import Happy
 from sad import Sad
 
 def main():
-    smiley = Angry()
+    smiley = Happy()
 
     smiley.show()
 
