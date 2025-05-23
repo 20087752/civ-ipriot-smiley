@@ -59,10 +59,10 @@ Address the following tasks and questions based on the code provided in this rep
 3. Run the project locally by executing the `main.py` file
 4. Evidence this by providing screenshots of the project directory structure and the output of the `main.py` file
 
-![Local Execution (INSERT YOUR SCREENSHOT)](screenshots/CREATE_A_SCREENSHOT_OF_YOUR_local_setup.png)
 ![DirectoryStructure.png](screenshots/DirectoryStructure.png)
 
 ![MainOutput.png](screenshots/MainOutput.png)
+
 
 If you are running on a Raspberry Pi, you can use the following command to run the project and then screenshot the
 result:
@@ -315,12 +315,13 @@ argument that determines the duration of the blink.
 
 Include a screenshot of the sad smiley or the modified `main.py`:
 
-![Sad Smiley Blinking](screenshots/sad_blinking.png)
+![SadSmiley.png](screenshots/SadSmiley.png)
 
 - Observe and document the Sad smiley as it blinks its eyes. Describe any adjustments or issues encountered during
   implementation.
 
-  > Your answer here
+  > Initially I had problems getting the blinking to work, then I realised I had to import the Blinkable class and the
+    time module.
 
   ### 2.8. If It Walks Like a Duck…
 
@@ -331,30 +332,37 @@ Include a screenshot of the sad smiley or the modified `main.py`:
     1. **Class Type Analysis:** What kind of class is `Blinkable`? Inspect its superclass for clues about its
        classification.
 
-       > Your answer here
-
-    2. **Class Implementation:** `Blinkable` is a class intended to be implemented by other classes. What generic term
+    > 'Blinkable' is considered an "Abstract Base Class" (ABC)
+    
+    > https://www.geeksforgeeks.org/abstract-base-class-abc-in-python/
+    
+  
+  2. **Class Implementation:** `Blinkable` is a class intended to be implemented by other classes. What generic term
        describes this kind of class, which is designed for implementation by others? **Clue**: Notice the lack of any
        concrete implementation and the naming convention.
 
-  > Your answer here
+    > The generic term for classes that do this is an "interface" class
 
-    3. **OO Principle Identification:** Regarding your answer to question (2), which Object-Oriented (OO) principle does
+  3. **OO Principle Identification:** Regarding your answer to question (2), which Object-Oriented (OO) principle does
        this represent? Choose from the following and justify your answer in 1-2 sentences: Abstraction, Polymorphism,
        Inheritance, Encapsulation.
 
-  > Your answer here
+   > The principle to define this class is 'Abstraction'. There is no value defined in the method itself and is
+     designed to be assigned values from other classes. 
 
-    4. **Implementation Flexibility:** Explain why you could grant the Sad Smiley a blinking feature similar to the
+  4. **Implementation Flexibility:** Explain why you could grant the Sad Smiley a blinking feature similar to the
        Happy Smiley's implementation, even without directly using `Blinkable`.
 
-  > Your answer here
+  > Inheriting from 'Blinkable' is only used to define a "blink" method. You can create a blink method self-contained
+    in the class and it'll function normally.
 
-    5. **Concept and Language Specificity:** In relation to your response to question (4), what is this capability known
-       as, and why is it feasible in Python and many other dynamically typed languages but not in most statically typed
-       programming languages like C#? **Clue** This concept is hinted at in the title of this section.
+5. **Concept and Language Specificity:** In relation to your response to question (4), what is this capability known
+   as, and why is it feasible in Python and many other dynamically typed languages but not in most statically typed
+   programming languages like C#? **Clue** This concept is hinted at in the title of this section.
 
-  > Your answer here
+  > This capability is known as "Duck Typing", which is possible because Python is a dynamically typed langauge.
+    Static-typed languages, like C#, are much more strict with how data is declared which restricts the ability
+    of assumption.
 
   ***
 
@@ -366,23 +374,26 @@ Include a screenshot of the sad smiley or the modified `main.py`:
   typically utilize colors like green, red, or orange. We'll explore the feasibility of integrating these colors into
   our smileys.
 
-    1. **Defined Colors and Their Location:**
+1. **Defined Colors and Their Location:**
 
-        1. Which colors are defined and in which class(s)?
-           > Your answer here
-        2. What type of variables hold these colors? Are the values expected to change during the program's execution?
-           Explain your answer.
-           > Your answer here
-        3. Add the color blue to the appropriate class using the appropriate format and values.
+    1. Which colors are defined and in which class(s)?
+        > Yellow and black (BLANK) are defined in the 'Smiley' class.
+
+    2. What type of variables hold these colors? Are the values expected to change during the program's execution?
+       Explain your answer.
+        > These variables are stored as tuples, therefore their values are not expected to change.
+ 
+    3. Add the color blue to the appropriate class using the appropriate format and values.
+        > ![AddedBlue.png](screenshots/AddedBlue.png)
 
     2. **Usage of Color Variables:**
 
         1. In which classes are the color variables used?
-           > Your answer here
+           > When drawing the eyes and mouth in 'Happy' and 'Sad', also when drawing the base face in 'Smiley'
 
     3. **Simple Method to Change Colors:**
     4. What is the easiest way you can think to change the smileys to green? Easiest, not necessarily the best!
-       > Your answer here
+       > Replacing "YELLOW" with "GREEN" in areas where "YELLOW" is called.
 
   Here's a revised version of the "Flexible Colors – Step 1" section for the smiley project, incorporating your
   specifications for formatting and content updates:
@@ -396,7 +407,7 @@ Include a screenshot of the sad smiley or the modified `main.py`:
     1. **Add a method called `complexion` to the `Smiley` class:** Implement this instance method to return
        `self.YELLOW`. Using the term "complexion" instead of "color" provides a more abstract terminology that focuses
        on the meaning rather than implementation.
-
+   
     2. **Refactor subclasses to use the `complexion` method:** Modify any subclass that directly accesses the color
        variable to instead utilize the new `complexion` method. This ensures that color handling is centralized and can
        be easily modified in the future.
@@ -429,7 +440,7 @@ Include a screenshot of the sad smiley or the modified `main.py`:
        value of the `complexion` variable. Include a screenshot evidencing you have found the correct refactor tool and
        the changes made.
 
-  ![Bulk Rename](screenshots/bulk_rename.png)
+  ![BulkRename.png](screenshots/BulkRename.png)
 
     5. **Update the `complexion` method:** Adjust this method to return `self.my_complexion`, ensuring that whatever
        color is assigned during instantiation is what the smiley displays.
